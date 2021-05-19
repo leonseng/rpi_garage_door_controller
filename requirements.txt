@@ -1,0 +1,4 @@
+Flask==2.0.0
+waitress==2.0.0
+gpiozero==1.6.2
+RPi.GPIO==0.7.0
