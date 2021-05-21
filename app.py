@@ -16,9 +16,9 @@ app = Flask(__name__)
 logging.basicConfig(level=logging.DEBUG if app.debug else logging.INFO)
 
 # Raspberry Pi GPIO mapping
-app.config['GPIO_OPEN'] = os.environ.get("RPI_GARAGE_DOOR_CONTROLLER_GPIO_OPEN", default=str(17))
-app.config['GPIO_CLOSE'] = os.environ.get("RPI_GARAGE_DOOR_CONTROLLER_GPIO_CLOSE", default=str(27))
 app.config['GPIO_DOOR_STATE'] = os.environ.get("RPI_GARAGE_DOOR_CONTROLLER_GPIO_DOOR_STATE", default=str(22))
+app.config['GPIO_OPEN'] = os.environ.get("RPI_GARAGE_DOOR_CONTROLLER_GPIO_OPEN", default=str(26))
+app.config['GPIO_CLOSE'] = os.environ.get("RPI_GARAGE_DOOR_CONTROLLER_GPIO_CLOSE", default=str(21))
 
 # Initialize GPIO variables
 rpi_button_door_state = Button(app.config['GPIO_DOOR_STATE'], pull_up=False)
