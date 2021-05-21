@@ -9,7 +9,7 @@ from flask.wrappers import Response
 from gpiozero import Button, DigitalOutputDevice
 
 class DoorState(Enum):
-  OPENED = "opened"
+  OPEN = "open"
   CLOSED = "closed"
 
 app = Flask(__name__)
@@ -31,7 +31,7 @@ def garage_door_endpoint():
     return Response(
       json.dumps(
         {
-          "door_state": DoorState.OPENED.value if rpi_button_door_state.is_pressed else DoorState.CLOSED.value
+          "door_state": DoorState.OPEN.value if rpi_button_door_state.is_pressed else DoorState.CLOSED.value
         }
       ),
       status=200,
@@ -52,7 +52,7 @@ def garage_door_endpoint():
         mimetype='application/json'
       )
 
-    if req_data["door_state"] == DoorState.OPENED.value:
+    if req_data["door_state"] == DoorState.OPEN.value:
       app.logger.info("Opening door")
       app.logger.debug("Blinking GPIO " + app.config['GPIO_OPEN'])
       rpi_output_open.blink(n=1)
@@ -60,7 +60,7 @@ def garage_door_endpoint():
       return Response(
         json.dumps(
           {
-            "door_state": DoorState.OPENED.value
+            "door_state": DoorState.OPEN.value
           }
         ),
         status=201,
