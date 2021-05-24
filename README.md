@@ -42,7 +42,7 @@ GET /garage_door
 # Response
 200
 {
-  "door_state": "opened"
+  "door_state": "open"
 }
 ```
 
@@ -51,13 +51,13 @@ Open door.
 # Request
 POST /garage_door
 {
-  "door_state": "opened"
+  "door_state": "open"
 }
 
 # Response
 201
 {
-  "door_state": "opened"
+  "door_state": "open"
 }
 ```
 
